@@ -10,6 +10,8 @@ on:
   pull_request:
     branches: [master]
 
+permissions:
+  contents: write
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -34,6 +36,4 @@ jobs:
         env: 
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        permissions:
-          contents: write
         run: npx semantic-release
