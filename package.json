@@ -1,7 +1,28 @@
 {
-  "name": "storybook-ts",
-  "version": "0.1.0",
-  "private": true,
+  "name": "aa-storybook-test",
+  "version": "0.0.1",
+  "private": false,
+  "license": "MIT",
+  "typings": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "homepage": "https://andyalvarado.com",
+  "peerDependencies": {
+    "react": ">=18",
+    "typescript": ">=4.0.0"
+  },
+  "repository": {
+    "url": "https://github.com/CafeinoDev/storybook-test",
+    "type": "git"
+  },
+  "release": {
+    "branches": [
+      "master"
+    ]
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
   "dependencies": {
     "@testing-library/dom": "^9.0.0",
     "@testing-library/jest-dom": "^5.16.5",
@@ -11,18 +32,20 @@
     "@types/node": "^16.18.12",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
-    "react": "^18.2.0",
+    "react": ">=18",
     "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1",
-    "typescript": "^4.9.5",
+    "typescript": ">=4.0.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "start-storybook -p 6006 -s public",
-    "build": "build-storybook -s public",
+    "build": "npm run clean && tsc && npm run copy-files",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "chromatic": "npx chromatic --project-token=513177c29080"
+    "chromatic": "npx chromatic --project-token=513177c29080",
+    "clean": "rimraf dist/",
+    "copy-files": "copyfiles -u 1 src/**/*.css dist/"
   },
   "eslintConfig": {
     "extends": [
@@ -65,9 +88,20 @@
     "@storybook/testing-library": "^0.0.13",
     "babel-plugin-named-exports-order": "^0.0.2",
     "chromatic": "^6.17.1",
+    "copyfiles": "^2.4.1",
     "prop-types": "^15.8.1",
+    "rimraf": "^4.1.2",
+    "semantic-release": "^20.1.0",
     "webpack": "^5.75.0"
   },
+  "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/github",
+      "@semantic-release/npm",
+      "@semantic-release/git"
+  ],
   "readme": "ERROR: No README data found!",
   "_id": "storybook-ts@0.1.0"
 }
