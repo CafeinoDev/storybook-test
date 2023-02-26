@@ -7,8 +7,7 @@
   "main": "dist/index.js",
   "homepage": "https://andyalvarado.com",
   "peerDependencies": {
-    "react": ">=18",
-    "typescript": ">=4.0.0"
+    "react": ">=18"
   },
   "repository": {
     "url": "https://github.com/CafeinoDev/storybook-test",
